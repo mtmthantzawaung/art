@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "380449542449",
+    "project_id": "artproject-ff861",
+    "storage_bucket": "artproject-ff861.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380449542449:android:80804936b33da330d3e010",
+        "android_client_info": {
+          "package_name": "com.example.art"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIOSWPFyPB_nVcR95vBrHf-b7Z7wMHqSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
