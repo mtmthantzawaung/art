@@ -25,6 +25,11 @@ mixin _$User {
   List<String> get favoriteVenueIds => throw _privateConstructorUsedError;
   List<String> get receivedPresentRoutes => throw _privateConstructorUsedError;
   List<String> get favoriteRestaurantIds => throw _privateConstructorUsedError;
+  @UserProviderDataConverter()
+  List<UserProviderData>? get providerData =>
+      throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +46,9 @@ abstract class $UserCopyWith<$Res> {
       List<String> stampedVenueIds,
       List<String> favoriteVenueIds,
       List<String> receivedPresentRoutes,
-      List<String> favoriteRestaurantIds});
+      List<String> favoriteRestaurantIds,
+      @UserProviderDataConverter() List<UserProviderData>? providerData,
+      @TimestampConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -62,6 +69,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? favoriteVenueIds = null,
     Object? receivedPresentRoutes = null,
     Object? favoriteRestaurantIds = null,
+    Object? providerData = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -84,6 +93,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.favoriteRestaurantIds
           : favoriteRestaurantIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      providerData: freezed == providerData
+          ? _value.providerData
+          : providerData // ignore: cast_nullable_to_non_nullable
+              as List<UserProviderData>?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -100,7 +117,9 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       List<String> stampedVenueIds,
       List<String> favoriteVenueIds,
       List<String> receivedPresentRoutes,
-      List<String> favoriteRestaurantIds});
+      List<String> favoriteRestaurantIds,
+      @UserProviderDataConverter() List<UserProviderData>? providerData,
+      @TimestampConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -118,6 +137,8 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? favoriteVenueIds = null,
     Object? receivedPresentRoutes = null,
     Object? favoriteRestaurantIds = null,
+    Object? providerData = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -140,6 +161,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value._favoriteRestaurantIds
           : favoriteRestaurantIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      providerData: freezed == providerData
+          ? _value._providerData
+          : providerData // ignore: cast_nullable_to_non_nullable
+              as List<UserProviderData>?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -152,11 +181,14 @@ class _$UserImpl implements _User {
       required final List<String> stampedVenueIds,
       required final List<String> favoriteVenueIds,
       required final List<String> receivedPresentRoutes,
-      required final List<String> favoriteRestaurantIds})
+      required final List<String> favoriteRestaurantIds,
+      @UserProviderDataConverter() final List<UserProviderData>? providerData,
+      @TimestampConverter() required this.createdAt})
       : _stampedVenueIds = stampedVenueIds,
         _favoriteVenueIds = favoriteVenueIds,
         _receivedPresentRoutes = receivedPresentRoutes,
-        _favoriteRestaurantIds = favoriteRestaurantIds;
+        _favoriteRestaurantIds = favoriteRestaurantIds,
+        _providerData = providerData;
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -198,9 +230,24 @@ class _$UserImpl implements _User {
     return EqualUnmodifiableListView(_favoriteRestaurantIds);
   }
 
+  final List<UserProviderData>? _providerData;
+  @override
+  @UserProviderDataConverter()
+  List<UserProviderData>? get providerData {
+    final value = _providerData;
+    if (value == null) return null;
+    if (_providerData is EqualUnmodifiableListView) return _providerData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @TimestampConverter()
+  final DateTime createdAt;
+
   @override
   String toString() {
-    return 'User(id: $id, stampedVenueIds: $stampedVenueIds, favoriteVenueIds: $favoriteVenueIds, receivedPresentRoutes: $receivedPresentRoutes, favoriteRestaurantIds: $favoriteRestaurantIds)';
+    return 'User(id: $id, stampedVenueIds: $stampedVenueIds, favoriteVenueIds: $favoriteVenueIds, receivedPresentRoutes: $receivedPresentRoutes, favoriteRestaurantIds: $favoriteRestaurantIds, providerData: $providerData, createdAt: $createdAt)';
   }
 
   @override
@@ -216,7 +263,11 @@ class _$UserImpl implements _User {
             const DeepCollectionEquality()
                 .equals(other._receivedPresentRoutes, _receivedPresentRoutes) &&
             const DeepCollectionEquality()
-                .equals(other._favoriteRestaurantIds, _favoriteRestaurantIds));
+                .equals(other._favoriteRestaurantIds, _favoriteRestaurantIds) &&
+            const DeepCollectionEquality()
+                .equals(other._providerData, _providerData) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
@@ -227,7 +278,9 @@ class _$UserImpl implements _User {
       const DeepCollectionEquality().hash(_stampedVenueIds),
       const DeepCollectionEquality().hash(_favoriteVenueIds),
       const DeepCollectionEquality().hash(_receivedPresentRoutes),
-      const DeepCollectionEquality().hash(_favoriteRestaurantIds));
+      const DeepCollectionEquality().hash(_favoriteRestaurantIds),
+      const DeepCollectionEquality().hash(_providerData),
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -249,7 +302,9 @@ abstract class _User implements User {
       required final List<String> stampedVenueIds,
       required final List<String> favoriteVenueIds,
       required final List<String> receivedPresentRoutes,
-      required final List<String> favoriteRestaurantIds}) = _$UserImpl;
+      required final List<String> favoriteRestaurantIds,
+      @UserProviderDataConverter() final List<UserProviderData>? providerData,
+      @TimestampConverter() required final DateTime createdAt}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -263,6 +318,12 @@ abstract class _User implements User {
   List<String> get receivedPresentRoutes;
   @override
   List<String> get favoriteRestaurantIds;
+  @override
+  @UserProviderDataConverter()
+  List<UserProviderData>? get providerData;
+  @override
+  @TimestampConverter()
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

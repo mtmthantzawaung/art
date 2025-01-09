@@ -20,6 +20,11 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       favoriteRestaurantIds: (json['favoriteRestaurantIds'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      providerData: (json['providerData'] as List<dynamic>?)
+          ?.map(const UserProviderDataConverter().fromJson)
+          .toList(),
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -29,4 +34,8 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'favoriteVenueIds': instance.favoriteVenueIds,
       'receivedPresentRoutes': instance.receivedPresentRoutes,
       'favoriteRestaurantIds': instance.favoriteRestaurantIds,
+      'providerData': instance.providerData
+          ?.map(const UserProviderDataConverter().toJson)
+          .toList(),
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
     };
